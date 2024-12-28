@@ -1,24 +1,19 @@
 import React from "react";
-import Base from "../components/Base";
 import Header from "../components/Header";
 import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import { Helmet } from "react-helmet";
-// import './css/media_queries.css'
-
+import Projects from "../components/Projects"
+import { Title } from "react-head";
 
 const Homepage = () => {
     return (
         <>
-            <Helmet>
-                <title>Syn 606 | Homepage</title>
-            </Helmet>
+            <Title>
+                Syn 606 - Portfolio
+            </Title>
+            <Header />
+            <Skills />
+            <Projects />
 
-            <Base>
-                <Header />
-                <Skills />
-                <Projects />
-            </Base>
         </>
     );
 };

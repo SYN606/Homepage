@@ -1,12 +1,12 @@
+import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
 // import Navbar from './Navbar';
 
 
-const Base = ({children }) => {
+const Base = () => {
     return (
         <>
-            {/* <Navbar /> */}
-                {children}
+            <Outlet />
             <Footer />
         </>
     );

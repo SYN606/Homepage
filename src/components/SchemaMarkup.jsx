@@ -1,38 +1,42 @@
-import { Helmet } from "react-helmet";
+import { useEffect } from 'react';
 
 const SchemaMarkup = () => {
-    const breadcrumbSchema = {
-        "@context": "https://schema.org/",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Visit Linkedin",
-                "item": "https://www.linkedin.com/in/syn606/",
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Youtube",
-                "item": "https://youtube.com/@syn_606",
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Telegram",
-                "item": "https://t.me/syn_606",
-            },
-        ],
+  useEffect(() => {
+    const breadcrumbData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.example.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Category",
+          "item": "https://www.example.com/category"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Product",
+          "item": "https://www.example.com/category/product"
+        }
+      ]
     };
 
-    return (
-        <Helmet>
-            <script type="application/ld+json">
-                {JSON.stringify(breadcrumbSchema)}
-            </script>
-        </Helmet>
-    );
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.innerHTML = JSON.stringify(breadcrumbData);
+    document.head.appendChild(scriptTag);
+    return () => {
+      document.head.removeChild(scriptTag);
+    };
+  }, []);
+
+  return null; 
 };
 
 export default SchemaMarkup;

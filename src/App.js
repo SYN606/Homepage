@@ -1,24 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage'
-import { HelmetProvider } from "react-helmet-async";
 import SchemaMarkup from './components/SchemaMarkup'
 import './css/global.css'
-import './css/media_queries.css'
-
+import Base from './components/Base'
+import { HeadProvider } from 'react-head';
 
 
 const App = () => {
   return (
     <>
+      <HeadProvider>
       <SchemaMarkup />
-      <HelmetProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Base />}>
+              <Route path="" element={<Homepage />} />
+            </Route>
           </Routes>
         </Router>
-      </HelmetProvider>
+      </HeadProvider>
     </>
   );
 };
